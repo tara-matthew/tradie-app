@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/Users/tara/Library/Application Support/Herd/bin/php84",
+            "args": [
+                "/Users/tara/Herd/tradie-app/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
