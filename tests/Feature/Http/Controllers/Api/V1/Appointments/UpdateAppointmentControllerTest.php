@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Appointment;
+use Carbon\Carbon;
 
 it('updates the appointment and returns it', function () {
     $appointment = Appointment::factory()->create();
@@ -10,7 +11,7 @@ it('updates the appointment and returns it', function () {
         'scheduled_at' => $newScheduledAt,
     ])
         ->assertOk()
-        ->assertJsonPath('data.scheduled_at', Carbon\Carbon::parse($newScheduledAt)->toJSON());
+        ->assertJsonPath('data.scheduled_at', Carbon::parse($newScheduledAt)->toJSON());
 
     $this->assertDatabaseHas('appointments', [
         'id' => $appointment->id,
