@@ -27,8 +27,8 @@ it('fails validation for invalid input', function (array $data, string $invalidF
         ...$data,
     ], (new UpdateCustomerRequest)->rules());
 
-    expect($validator->fails())->toBeTrue();
-    expect($validator->errors()->has($invalidField))->toBeTrue();
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has($invalidField))->toBeTrue();
 })->with([
     'name too long' => [['name' => str_repeat('a', 256)], 'name'],
     'phone too long' => [['phone' => str_repeat('1', 256)], 'phone'],

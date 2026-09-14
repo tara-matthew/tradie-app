@@ -37,8 +37,8 @@ it('fails validation for invalid input', function (array $data, string $invalidF
         ...$data,
     ], (new StoreCustomerRequest)->rules());
 
-    expect($validator->fails())->toBeTrue();
-    expect($validator->errors()->has($invalidField))->toBeTrue();
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has($invalidField))->toBeTrue();
 })->with([
     'name too long' => [['name' => str_repeat('a', 256)], 'name'],
     'phone too long' => [['phone' => str_repeat('1', 256)], 'phone'],
@@ -55,6 +55,6 @@ it('fails when the email is already taken', function () {
         'email' => 'jane@example.com',
     ], (new StoreCustomerRequest)->rules());
 
-    expect($validator->fails())->toBeTrue();
-    expect($validator->errors()->has('email'))->toBeTrue();
+    expect($validator->fails())->toBeTrue()
+        ->and($validator->errors()->has('email'))->toBeTrue();
 });
