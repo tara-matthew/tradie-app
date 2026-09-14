@@ -13,11 +13,17 @@ class Customer extends Model
     /** @use HasFactory<CustomerFactory> */
     use HasFactory;
 
+    /**
+     * @return HasMany<CustomerJob, $this>
+     */
     public function jobs(): HasMany
     {
         return $this->hasMany(CustomerJob::class);
     }
 
+    /**
+     * @return HasManyThrough<Appointment, CustomerJob, $this>
+     */
     public function appointments(): HasManyThrough
     {
         return $this->hasManyThrough(Appointment::class, CustomerJob::class);

@@ -22,6 +22,9 @@ class Appointment extends Model
         ];
     }
 
+    /**
+     * @return BelongsTo<CustomerJob, $this>
+     */
     public function customerJob(): BelongsTo
     {
         return $this->belongsTo(CustomerJob::class);

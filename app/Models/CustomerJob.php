@@ -13,11 +13,17 @@ class CustomerJob extends Model
     /** @use HasFactory<CustomerJobFactory> */
     use HasFactory;
 
+    /**
+     * @return BelongsTo<Customer, $this>
+     */
     public function customer(): BelongsTo
     {
         return $this->belongsTo(Customer::class);
     }
 
+    /**
+     * @return HasMany<Appointment, $this>
+     */
     public function appointments(): HasMany
     {
         return $this->hasMany(Appointment::class);
